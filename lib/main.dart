@@ -1,7 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:my_recipe_flutter/blocs/recipe_manager_cubit.dart';
+import 'package:my_recipe_flutter/controllers/environment_handler.dart';
+import 'package:my_recipe_flutter/views/main_page.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  await dotenv.load(fileName: ".env");
+  await Supabase.initialize(
+    url: apiUrl,
+    anonKey: apiKey,
+  );
+  final RecipeManagerCubit recipeManagerCubit = RecipeManagerCubit();
+  runApp(MultiBlocProvider(
+    providers: [
+      BlocProvider<RecipeManagerCubit>(create: (_) => recipeManagerCubit),
+      BlocProvider<RecipeManagerCubit>(create: (_) => recipeManagerCubit),
+    ],
+    child: BlocProvider<RecipeManagerCubit>(
+        create: (_) => recipeManagerCubit, child: const MyApp()),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -18,14 +37,5 @@ class MyApp extends StatelessWidget {
       ),
       home: const MainPage(),
     );
-  }
-}
-
-class MainPage extends StatelessWidget {
-  const MainPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }
