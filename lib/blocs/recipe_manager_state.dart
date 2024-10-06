@@ -9,12 +9,12 @@ abstract class RecipeManagerState extends Equatable {
 final class RecipeManagerInitial extends RecipeManagerState {}
 
 final class RecipeManagerLoaded extends RecipeManagerState {
-  RecipeManagerLoaded(this.listOfRecipes);
+  RecipeManagerLoaded(this.listOfRecipe);
 
-  final List<RecipeModel> listOfRecipes;
+  final List<RecipeModel> listOfRecipe;
 
   @override
-  List<Object?> get props => [listOfRecipes];
+  List<Object?> get props => [listOfRecipe];
 }
 
 final class RecipeManagerLoading extends RecipeManagerState {}

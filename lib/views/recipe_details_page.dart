@@ -6,9 +6,12 @@ import 'package:my_recipe_flutter/controllers/recipe_form_helpers.dart';
 import 'package:my_recipe_flutter/models/recipe_model.dart';
 
 class RecipeDetailsPage extends StatelessWidget {
-  const RecipeDetailsPage({super.key, required this.recipe});
+  const RecipeDetailsPage(
+      {super.key, required this.recipe, required this.userId});
 
   final RecipeModel recipe;
+
+  final String userId;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,8 @@ class RecipeDetailsPage extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {
-                RecipeFormHelper().buildRecipeForm(context, recipe: recipe);
+                RecipeFormHelper()
+                    .buildRecipeForm(context, recipe: recipe, userId: userId);
               },
               icon: const Icon(Icons.edit)),
           IconButton(
