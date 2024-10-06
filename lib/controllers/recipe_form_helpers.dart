@@ -23,6 +23,7 @@ class RecipeFormHelper {
   void buildRecipeForm(
     BuildContext context, {
     RecipeModel? recipe,
+    required String userId,
   }) {
     showModalBottomSheet<void>(
       isScrollControlled: true,
@@ -30,7 +31,7 @@ class RecipeFormHelper {
       builder: (BuildContext context) {
         return SizedBox(
             height: getIdealSize(context).height,
-            child: AddRecipePage(recipeModel: recipe));
+            child: AddRecipePage(recipeModel: recipe, userId: userId));
       },
     );
   }

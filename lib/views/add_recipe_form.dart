@@ -11,9 +11,11 @@ import 'package:my_recipe_flutter/models/recipe_model.dart';
 import 'package:path/path.dart' as path;
 
 class AddRecipePage extends StatefulWidget {
-  const AddRecipePage({super.key, this.recipeModel});
+  const AddRecipePage({super.key, this.recipeModel, required this.userId});
 
   final RecipeModel? recipeModel;
+
+  final String userId;
 
   @override
   _AddRecipePageState createState() => _AddRecipePageState();
@@ -91,6 +93,7 @@ class _AddRecipePageState extends State<AddRecipePage> {
         imagePublicUrl: "",
         imagePath: 'public/${_titleController.text.toSnakeCase()}'
             '+${category.value!.toSnakeCase()}.jpg',
+        auth: widget.userId,
       );
       if (isEditRecipe()) {
         if (_image != null) {

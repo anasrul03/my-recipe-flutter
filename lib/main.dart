@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:my_recipe_flutter/blocs/auth/auth_cubit.dart';
 import 'package:my_recipe_flutter/blocs/recipe_manager_cubit.dart';
 import 'package:my_recipe_flutter/controllers/environment_handler.dart';
 import 'package:my_recipe_flutter/views/main_page.dart';
@@ -13,10 +14,11 @@ void main() async {
     anonKey: apiKey,
   );
   final RecipeManagerCubit recipeManagerCubit = RecipeManagerCubit();
+  final AuthCubit authCubit = AuthCubit();
   runApp(MultiBlocProvider(
     providers: [
       BlocProvider<RecipeManagerCubit>(create: (_) => recipeManagerCubit),
-      BlocProvider<RecipeManagerCubit>(create: (_) => recipeManagerCubit),
+      BlocProvider<AuthCubit>(create: (_) => authCubit),
     ],
     child: BlocProvider<RecipeManagerCubit>(
         create: (_) => recipeManagerCubit, child: const MyApp()),

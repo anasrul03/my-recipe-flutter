@@ -9,6 +9,7 @@ class RecipeModel implements Equatable {
     required this.category,
     required this.imagePublicUrl,
     required this.imagePath,
+    required this.auth,
   });
 
   final String? id;
@@ -18,6 +19,7 @@ class RecipeModel implements Equatable {
   final String category;
   final String imagePublicUrl;
   final String imagePath;
+  final String auth;
 
   // fromJson function to convert a map into a RecipeModel object
   factory RecipeModel.fromJson(Map<String, dynamic> json) {
@@ -28,7 +30,8 @@ class RecipeModel implements Equatable {
         instructions: json['instructions'],
         category: json['category'],
         imagePublicUrl: json['imagePublicUrl'],
-        imagePath: json['imagePath']);
+        imagePath: json['imagePath'],
+        auth: json['auth']);
   }
 
   // toJson function to convert a RecipeModel object into a map
@@ -39,7 +42,8 @@ class RecipeModel implements Equatable {
       'instructions': instructions,
       'category': category,
       'imagePublicUrl': imagePublicUrl,
-      'imagePath': imagePath
+      'imagePath': imagePath,
+      'auth': auth
     };
   }
 
@@ -50,7 +54,8 @@ class RecipeModel implements Equatable {
       'ingredients': ingredients,
       'instructions': instructions,
       'category': category,
-      'imagePath': imagePath
+      'imagePath': imagePath,
+      'auth': auth
     };
   }
 
@@ -63,6 +68,7 @@ class RecipeModel implements Equatable {
     String? category,
     String? imagePublicUrl,
     String? imagePath,
+    String? auth,
   }) {
     return RecipeModel(
       id: id ?? this.id,
@@ -72,6 +78,7 @@ class RecipeModel implements Equatable {
       category: category ?? this.category,
       imagePublicUrl: imagePublicUrl ?? this.imagePublicUrl,
       imagePath: imagePath ?? this.imagePath,
+      auth: auth ?? this.auth,
     );
   }
 
@@ -84,6 +91,7 @@ class RecipeModel implements Equatable {
         category,
         imagePublicUrl,
         imagePath,
+        auth,
       ];
 
   @override
