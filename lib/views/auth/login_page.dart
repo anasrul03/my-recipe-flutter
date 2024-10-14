@@ -21,7 +21,7 @@ class _LoginPageState extends State<LoginPage> {
       listener: (_, state) {},
       builder: (context, state) {
         if (state is AuthErrorState) {
-          return Text("Butoh");
+          return Text("Error");
         }
         return Scaffold(
           appBar: AppBar(
